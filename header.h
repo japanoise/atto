@@ -48,6 +48,12 @@ typedef struct keymap_t {
 	void (*func)(void);
 } keymap_t;
 
+typedef struct undo_t {
+	point_t u_point;
+	point_t u_gap;
+	point_t u_egap;
+} undo_t;
+
 typedef struct buffer_t
 {
 	struct buffer_t *b_next;  /* Link to next buffer_t */
@@ -69,6 +75,7 @@ typedef struct buffer_t
 	char b_fname[NAME_MAX + 1]; /* filename */
 	char b_bname[STRBUF_S];   /* buffer name */
 	char b_flags;             /* buffer flags */
+	undo_t b_ubuf;            /* undoset */
 } buffer_t;
 
 typedef struct window_t
@@ -140,6 +147,8 @@ extern int posix_file(char *);
 extern int save(char *);
 extern int load_file(char *);
 extern int insert_file(char *, int);
+extern void undoset(void);
+extern void undo(void);
 extern void backsp(void);
 extern void block(void);
 extern void iblock(void);

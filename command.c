@@ -146,6 +146,7 @@ void insert()
 void backsp()
 {
 	curbp->b_point = movegap(curbp, curbp->b_point);
+	undoset();
 	if (curbp->b_buf < curbp->b_gap) {
 		curbp->b_gap -= prev_utf8_char_size();
 		curbp->b_flags |= B_MODIFIED;
@@ -156,6 +157,7 @@ void backsp()
 void delete()
 {
 	curbp->b_point = movegap(curbp, curbp->b_point);
+	undoset();
 	if (curbp->b_egap < curbp->b_ebuf) {
 		curbp->b_egap += utf8_size(*curbp->b_egap);
 		curbp->b_point = pos(curbp, curbp->b_egap);
@@ -308,6 +310,7 @@ void copy_cut(int cut)
 	if ((scrap = (char_t*) malloc(nscrap)) == NULL) {
 		msg("No more memory available.");
 	} else {
+		undoset();
 		(void) memcpy(scrap, p, nscrap * sizeof (char_t));
 		if (cut) {
 			curbp->b_egap += nscrap; /* if cut expand gap down */
@@ -329,6 +332,7 @@ void paste()
 		msg("Scrap is empty.  Nothing to paste.");
 	} else if (nscrap < curbp->b_egap - curbp->b_gap || growgap(curbp, nscrap)) {
 		curbp->b_point = movegap(curbp, curbp->b_point);
+		undoset();
 		memcpy(curbp->b_gap, scrap, nscrap * sizeof (char_t));
 		curbp->b_gap += nscrap;
 		curbp->b_point = pos(curbp, curbp->b_egap);

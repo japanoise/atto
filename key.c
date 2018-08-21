@@ -12,6 +12,7 @@ keymap_t keymap[] = {
 	{"C-h backspace            ", "\x08", backsp },
 	{"C-k kill-to-eol          ", "\x0B", killtoeol },
 	{"C-l refresh              ", "\x0C", redraw },
+	{"C-/                      ", "\x1F", undo },
 	{"C-n next-line            ", "\x0E", down },
 	{"C-p previous-line        ", "\x10", up },
 	{"C-r search               ", "\x12", search },
