@@ -38,6 +38,8 @@ int mkstemp(char *);
 #define ID_BLOCK_COMMENT   6
 #define ID_DOUBLE_STRING   7
 #define ID_SINGLE_STRING   8
+/* Please, never ever assume people are using white-on-black */
+#define COLOR_DEFAULT -1
 
 typedef unsigned char char_t;
 typedef long point_t;
