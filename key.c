@@ -61,7 +61,7 @@ keymap_t keymap[] = {
 	{"end end-of-line          ", "\x1B\x5B\x46", lnend },
 	{"pgup backward-page       ", "\x1B\x5B\x35\x7E",pgup }, /* PgUp key */
 	{"pgdn forward-page        ", "\x1B\x5B\x36\x7E", pgdown }, /* PgDn key */
-        {"resize resize-terminal   ", "\x9A",     resize_terminal },
+	{"resize resize-terminal   ", "\x9A",     resize_terminal },
 	{"K_ERROR                  ", NULL, NULL }
 };
 
