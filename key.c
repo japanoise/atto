@@ -37,7 +37,7 @@ keymap_t keymap[] = {
 	{"esc f forward-word       ", "\x1B\x66", wright },
 	{"esc g gotoline           ", "\x1B\x67", gotoline },
 	{"esc k kill-region        ", "\x1B\x6B", cut },
-	{"esc r query-replace      ", "\x1B\x72", query_replace },
+	{"esc % query-replace      ", "\x1B\x25", query_replace },
 	{"esc v backward-page      ", "\x1B\x76", pgup },
 	{"esc w copy-region        ", "\x1B\x77", copy},
 	{"esc @ set-mark           ", "\x1B\x40", iblock },  /* esc-@ */
